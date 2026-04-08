@@ -1,0 +1,206 @@
+/* FONDO ANIMADO */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #000000);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    color: white;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: url('../Imagenes/imagen1.png') no-repeat center;
+    background-size: cover;
+    
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* CARDS */
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    color: white;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* BOTÓN */
+.btn-primary {
+    background: linear-gradient(to right, #d4af37, #c59d2f);
+    border: none;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.2);
+}
+
+/* GALERÍA */
+.gallery img , .card img {
+    transition: 0.3s;
+    width: 100%;      
+    height: 250px;     
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+
+/* Parte de codigo de iniciar seccion y registrarse */
+
+body {
+    background: linear-gradient(-45deg, #1b1080, #302b63, #413309, #05522e);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+:root {
+    --primary: #398526;
+    --secondary: #267e88;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 24px;
+    color: white;
+}
+
+
+.form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.719);
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(254, 135, 0, 0.4);
+}
+
+.btn-primary {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    border: none;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+}
+
+.alert {
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 1. CONFIGURACIÓN BASE DEL BODY */
+body {
+    padding-top: 70px; 
+}
+
+
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+.hero .carousel,
+.hero .carousel-inner,
+.hero .carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero .carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    z-index: 1; 
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 2; 
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+
+
+.hero, 
+.hero h1, 
+.hero p, 
+.hero .lead {
+    color: #ffffff !important;
+}
+
+.hero .text-muted {
+    color: #ffffff !important;
+    opacity: 0.8; 
+}

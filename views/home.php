@@ -54,11 +54,9 @@
         <a href="index.php?action=getFormLoginUser" class="btn btn-primary btn-lg mt-3">Ingresar</a>
         <a href="index.php?action=getFormRegisterUser" class="btn btn-outline-light btn-lg mt-3">Registrarse</a>
         <?php endif; ?>
-  
-        
-        
     </div>
 </section>
+
 
 <section id="servicios" class="container py-5 text-center">
     <h2 class="mb-5 text-white fw-bold">Nuestros Servicios</h2>
@@ -172,7 +170,6 @@
         </div>
     </div>
 </section>
-
 
 
 <section class="container py-5 text-center">

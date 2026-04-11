@@ -5,7 +5,7 @@
     <title><?php echo SITE_NAME; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -33,11 +33,11 @@
 <section class="hero d-flex align-items-center text-center text-white">
     <div id="carouselHero" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active"><img src="../imagenes/imagen8.png" class="d-block w-100"></div>
-            <div class="carousel-item"><img src="../imagenes/imagen9.png" class="d-block w-100"></div>
-            <div class="carousel-item"><img src="../imagenes/imagen10.png" class="d-block w-100"></div>
-            <div class="carousel-item"><img src="../imagenes/imagen11.png" class="d-block w-100"></div>
-            <div class="carousel-item"><img src="../imagenes/imagen12.png" class="d-block w-100"></div>
+            <div class="carousel-item active"><img src="imagenes/imagen8.png" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="imagenes/imagen9.png" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="imagenes/imagen10.png" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="imagenes/imagen11.png" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="imagenes/imagen12.png" class="d-block w-100"></div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselHero" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
@@ -135,7 +135,7 @@
     <div class="row g-4">
         <div class="col-md-4">
             <div class="card p-3 h-100">
-                <img src="../imagenes/imagen5.png" class="img-fluid rounded mb-3">
+                <img src="imagenes/imagen5.png" class="img-fluid rounded mb-3">
                 <h4>Suite Deluxe</h4>
                 <p>$300.000 / noche</p>
                 <a href="#" class="btn btn-primary">Reservar</a>
@@ -143,7 +143,7 @@
         </div>
         <div class="col-md-4">
             <div class="card p-3 h-100">
-                <img src="../imagenes/imagen6.png" class="img-fluid rounded mb-3">
+                <img src="imagenes/imagen6.png" class="img-fluid rounded mb-3">
                 <h4>Habitación Doble</h4>
                 <p>$200.000 / noche</p>
                 <a href="#" class="btn btn-primary">Reservar</a>
@@ -151,7 +151,7 @@
         </div>
         <div class="col-md-4">
             <div class="card p-3 h-100">
-                <img src="../imagenes/imagen7.png" class="img-fluid rounded mb-3">
+                <img src="imagenes/imagen7.png" class="img-fluid rounded mb-3">
                 <h4>Habitación Individual</h4>
                 <p>$120.000 / noche</p>
                 <a href="#" class="btn btn-primary">Reservar</a>
@@ -164,9 +164,9 @@
     <h2 class="mb-5">Galería</h2>
     <div class="container">
         <div class="row g-3">
-            <div class="col-md-4"><img src="../imagenes/imagen2.png" class="img-fluid rounded"></div>
-            <div class="col-md-4"><img src="../imagenes/imagen3.png" class="img-fluid rounded"></div>
-            <div class="col-md-4"><img src="../imagenes/imagen4.png" class="img-fluid rounded"></div>
+            <div class="col-md-4"><img src="imagenes/imagen2.png" class="img-fluid rounded"></div>
+            <div class="col-md-4"><img src="imagenes/imagen3.png" class="img-fluid rounded"></div>
+            <div class="col-md-4"><img src="imagenes/imagen4.png" class="img-fluid rounded"></div>
         </div>
     </div>
 </section>

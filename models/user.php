@@ -68,28 +68,19 @@ class User {
     }
 
     public function validateDocument($data){
-    $conexion = new Conexion();
-    $conexion->conectar();
+        $conexion = new Conexion();
+        $conexion->conectar();
 
-    $document = $data['document_number'];
+        $document = $data['document_number'];
 
-    $sql = "SELECT * FROM users WHERE document_number = '$document'";
-    $conexion->query($sql);
+        $sql = "SELECT id FROM users WHERE document_number = '$document'";
+        $conexion->query($sql);
 
-    $result = $conexion->getResult();
-    $conexion->desconectar();
+        $result = $conexion->getResult();
+        $conexion->desconectar();
 
-    if($result->num_rows > 0){
-        return 1;
+        return $result->num_rows > 0;
     }
-
-    return 0;
-}
-
-    
-
-
-
 
 
 }

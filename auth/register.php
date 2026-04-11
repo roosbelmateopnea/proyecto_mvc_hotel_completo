@@ -7,7 +7,8 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="/proyecto_hotel/css/style.css">
 </head>
 
 <body class="bg-dark d-flex justify-content-center align-items-center min-vh-100">
@@ -32,24 +33,27 @@
                 </div>
             <?php endif; ?>
 
-            <form action="index.php?action=registerUser" method="POST">
+            <form action="/proyecto_hotel/index.php?action=registerUser" method="POST">
+
                 <div class="row g-3">
                     
                     <div class="col-md-6">
                         <label class="form-label fw-semibold">Tipo de Documento</label>
                         <select name="document_type_id" class="form-select">
-                            <option value="" selected disabled>Seleccione...</option>
-                            <option value="CC">Cédula de Ciudadanía</option>
-                            <option value="TI">Tarjeta de Identidad</option>
-                            <option value="CE">Cédula de Extranjería</option>
-                            <option value="PP">Pasaporte</option>
+                            <option value="">Seleccione...</option>
+
+                            <?php foreach($documentTypes as $doc): ?>
+                                <option value="<?php echo $doc['id']; ?>">
+                                    <?php echo $doc['nombre']; ?>
+                                </option>
+                            <?php endforeach; ?>
+
                         </select>
                     </div>
 
                     <div class="col-md-6">
                         <label class="form-label fw-semibold">Número de Documento</label>
                         <input type="text" name="document_number" class="form-control" placeholder="Ej: 12345678">
-                      
                     </div>
 
                     <div class="col-md-6">
@@ -92,54 +96,52 @@
 
                 <div class="text-center mt-4">
                     <span class="text-muted">¿Ya tienes una cuenta?</span>
-                    <a href="../views/index.php?action=getFormLoginUser" class="text-decoration-none fw-bold ms-1">
+                    
+                    <a href="/proyecto_hotel/index.php?action=getFormLoginUser" class="text-decoration-none fw-bold ms-1">
                         Iniciar Sesión
                     </a>
                 </div>
+
             </form>
 
         </div>
     </div>
 
-    <script>
-        document.querySelector("form").addEventListener("submit", function(e){
+<script>
+document.querySelector("form").addEventListener("submit", function(e){
 
-            let valid = true;
+    let valid = true;
 
-            let password = document.getElementById("password").value;
-            let confirmPassword = document.getElementById("confirmar_password").value;
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmar_password").value;
 
-            // LIMPIAR ERRORES
-            document.getElementById("error_password").innerText = "";
-            document.getElementById("error_confirm_password").innerText = "";
+    document.getElementById("error_password").innerText = "";
+    document.getElementById("error_confirm_password").innerText = "";
 
-            // REGEX CONTRASEÑA
-            let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W]).{6,}$/;
+    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W]).{6,}$/;
 
-            // VALIDAR PASSWORD
-            if(password === ""){
-                document.getElementById("error_password").innerText = "La contraseña es obligatoria";
-                valid = false;
-            } else if(!regex.test(password)){
-                document.getElementById("error_password").innerText =
-                "Debe tener mayúscula, minúscula, número, símbolo y mínimo 6 caracteres";
-                valid = false;
-            }
+    if(password === ""){
+        document.getElementById("error_password").innerText = "La contraseña es obligatoria";
+        valid = false;
+    } else if(!regex.test(password)){
+        document.getElementById("error_password").innerText =
+        "Debe tener mayúscula, minúscula, número, símbolo y mínimo 6 caracteres";
+        valid = false;
+    }
 
-            // VALIDAR CONFIRMAR PASSWORD
-            if(confirmPassword === ""){
-                document.getElementById("error_confirm_password").innerText = "Debes confirmar la contraseña";
-                valid = false;
-            } else if(password !== confirmPassword){
-                document.getElementById("error_confirm_password").innerText = "Las contraseñas no coinciden";
-                valid = false;
-            }
+    if(confirmPassword === ""){
+        document.getElementById("error_confirm_password").innerText = "Debes confirmar la contraseña";
+        valid = false;
+    } else if(password !== confirmPassword){
+        document.getElementById("error_confirm_password").innerText = "Las contraseñas no coinciden";
+        valid = false;
+    }
 
-            if(!valid){
-                e.preventDefault();
-            }
+    if(!valid){
+        e.preventDefault();
+    }
 
-        });
+});
 </script>
 
 </body>

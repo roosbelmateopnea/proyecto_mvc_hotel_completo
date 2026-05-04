@@ -5,8 +5,14 @@
     <title><?php echo SITE_NAME; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/proyecto_hotel/CSS/style.css">
 </head>
+
+<?php
+require_once 'controllers/controllerBase.php';
+$controller = new ControllerBase();
+?>
+
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -17,11 +23,16 @@
             <?php if(isset($_SESSION['data'])): ?>
                 <h5>Hola, Bienvenido <?php echo $_SESSION['data']['name']; ?></h5>
             <?php else: ?>
-                <h5>Hola, Bienvenido a Hotel Luxury</h5>
+                <h4>Hola, Bienvenido a Hotel Luxury</h4>
             <?php endif; ?>
             <a href="#servicios" class="btn btn-outline-light">Servicios</a>
             <a href="#habitaciones" class="btn btn-outline-light">Habitaciones</a>
             <a href="#contacto" class="btn btn-outline-light">Contacto</a>
+            <?php if(isset($_SESSION['data'])): ?>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalReserva">
+                    <i class="bi bi-calendar-check me-2"></i> Reservar
+                </button>
+            <?php endif; ?>
 
             <?php if(isset($_SESSION['data'])): ?>
                 <a href="index.php?action=closeSession" class="btn btn-danger">Cerrar sesión</a>
@@ -30,14 +41,36 @@
     </div>
 </nav>
 
+
+<?php if(isset($_SESSION['success'])): ?>
+    <div class="alert alert-success alert-dismissible fade show position-fixed" style="top: 80px; right: 20px; z-index: 1050; min-width: 300px;" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i><?php echo $_SESSION['success']; ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <?php unset($_SESSION['success']); ?>
+    </div>
+<?php endif; ?>
+
+<?php if(isset($_SESSION['errors'])): ?>
+    <div class="alert alert-danger alert-dismissible fade show position-fixed" style="top: 80px; right: 20px; z-index: 1050; min-width: 300px;" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <ul class="mb-0">
+            <?php foreach($_SESSION['errors'] as $error): ?>
+                <li><?php echo $error; ?></li>
+            <?php endforeach; ?>
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <?php unset($_SESSION['errors']); ?>
+    </div>
+<?php endif; ?>
+
 <section class="hero d-flex align-items-center text-center text-white">
     <div id="carouselHero" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active"><img src="imagenes/imagen8.png" class="d-block w-100"></div>
-            <div class="carousel-item"><img src="imagenes/imagen9.png" class="d-block w-100"></div>
-            <div class="carousel-item"><img src="imagenes/imagen10.png" class="d-block w-100"></div>
-            <div class="carousel-item"><img src="imagenes/imagen11.png" class="d-block w-100"></div>
-            <div class="carousel-item"><img src="imagenes/imagen12.png" class="d-block w-100"></div>
+            <div class="carousel-item active"><img src="/proyecto_hotel/Imagenes/imagen8.png" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="/proyecto_hotel/Imagenes/imagen9.png" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="/proyecto_hotel/Imagenes/imagen10.png" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="/proyecto_hotel/Imagenes/imagen11.png" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="/proyecto_hotel/Imagenes/imagen12.png" class="d-block w-100"></div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselHero" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
@@ -130,46 +163,69 @@
     </div>
 </section>
 
+
+
+
+
+
+
 <section id="habitaciones" class="container py-5 text-center">
     <h2 class="mb-5">Nuestras Habitaciones</h2>
     <div class="row g-4">
         <div class="col-md-4">
             <div class="card p-3 h-100">
-                <img src="imagenes/imagen5.png" class="img-fluid rounded mb-3">
+                <img src="/proyecto_hotel/Imagenes/imagen5.png" class="img-fluid rounded mb-3">
                 <h4>Suite Deluxe</h4>
                 <p>$300.000 / noche</p>
-                <a href="#" class="btn btn-primary">Reservar</a>
+             
             </div>
         </div>
         <div class="col-md-4">
             <div class="card p-3 h-100">
-                <img src="imagenes/imagen6.png" class="img-fluid rounded mb-3">
+                <img src="/proyecto_hotel/Imagenes/imagen6.png" class="img-fluid rounded mb-3">
                 <h4>Habitación Doble</h4>
                 <p>$200.000 / noche</p>
-                <a href="#" class="btn btn-primary">Reservar</a>
+               
             </div>
         </div>
         <div class="col-md-4">
             <div class="card p-3 h-100">
-                <img src="imagenes/imagen7.png" class="img-fluid rounded mb-3">
+                <img src="/proyecto_hotel/Imagenes/imagen7.png" class="img-fluid rounded mb-3">
                 <h4>Habitación Individual</h4>
                 <p>$120.000 / noche</p>
-                <a href="#" class="btn btn-primary">Reservar</a>
+                
             </div>
         </div>
     </div>
 </section>
 
-<section class="gallery text-center py-5">
-    <h2 class="mb-5">Galería</h2>
-    <div class="container">
-        <div class="row g-3">
-            <div class="col-md-4"><img src="imagenes/imagen2.png" class="img-fluid rounded"></div>
-            <div class="col-md-4"><img src="imagenes/imagen3.png" class="img-fluid rounded"></div>
-            <div class="col-md-4"><img src="imagenes/imagen4.png" class="img-fluid rounded"></div>
+
+<section id="galeria" class="container py-5 text-center">
+    <h2 class="mb-5">Galeria</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card p-3 h-100">
+                <img src="/proyecto_hotel/Imagenes/imagen2.png" class="img-fluid rounded mb-3">
+                
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3 h-100">
+                <img src="/proyecto_hotel/Imagenes/imagen3.png" class="img-fluid rounded mb-3">
+                
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3 h-100">
+                <img src="/proyecto_hotel/Imagenes/imagen4.png" class="img-fluid rounded mb-3">
+               
+            </div>
         </div>
     </div>
 </section>
+
+
+
 
 
 <section class="container py-5 text-center">
@@ -243,5 +299,8 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
 </body>
 </html>

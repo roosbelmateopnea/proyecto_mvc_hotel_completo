@@ -15,17 +15,28 @@ class Conexion {
         $this->mySQLI = new mysqli($host, $user, $password, $db);
 
         if ($this->mySQLI->connect_error) {
-            die('Error de conexión a la base de datos');
+            die('Error de conexión: ' . $this->mySQLI->connect_error);
         }
+
+        // Opcional (recomendado)
+        $this->mySQLI->set_charset("utf8");
     }
 
     public function desconectar(){
-        $this->mySQLI->close();
+        if($this->mySQLI){
+            $this->mySQLI->close();
+        }
     }
 
     public function query($sql){
         $this->result = $this->mySQLI->query($sql);
         $this->filasAfectadas = $this->mySQLI->affected_rows;
+
+        if(!$this->result){
+            die("Error SQL: " . $this->mySQLI->error);
+        }
+
+        return $this->result; 
     }
 
     public function getResult(){
@@ -34,6 +45,15 @@ class Conexion {
 
     public function getFilasAfectadas(){
         return $this->filasAfectadas;
+    }
+
+    public function real_escape_string($string){
+        return $this->mySQLI->real_escape_string($string);
+    }
+
+   
+    public function getError(){
+        return $this->mySQLI->error;
     }
 }
 

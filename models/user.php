@@ -1,6 +1,9 @@
+
 <?php
 
-require_once 'conexion.php';
+require_once 'connection/conexion.php'; 
+
+
 
 class User {
 
@@ -8,24 +11,22 @@ class User {
         $conexion = new Conexion();
         $conexion->conectar();
 
-        $sql = "SELECT * FROM users WHERE email = '{$data['email']}'";
+        $email = $conexion->real_escape_string($data['email']);
+
+        $sql = "SELECT id FROM usuarios WHERE email = '$email'";
         $conexion->query($sql);
 
         $result = $conexion->getResult();
         $conexion->desconectar();
 
-        if($result->num_rows > 0){
-            return 1;
-        }
-
-        return 0;
+        return $result->num_rows > 0;
     }
 
     public function registerUser($data){
         $conexion = new Conexion();
         $conexion->conectar();
 
-        $sql = "INSERT INTO users 
+        $sql = "INSERT INTO usuarios 
         (document_type_id, document_number, name, last_name, phone, email, password, role_id) 
         VALUES 
         (
@@ -40,24 +41,23 @@ class User {
         )";
 
         $conexion->query($sql);
-        $filas = $conexion->getFilasAfectadas();
 
+        $filas = $conexion->getFilasAfectadas();
         $conexion->desconectar();
 
         return $filas;
     }
 
-
     public function loginUser($data){
         $conexion = new Conexion();
         $conexion->conectar();
 
-        $email = $data['email'];
+        $email = $conexion->real_escape_string($data['email']);
 
-        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $sql = "SELECT * FROM usuarios WHERE email = '$email'";
         $conexion->query($sql);
-        $result = $conexion->getResult();
 
+        $result = $conexion->getResult();
         $conexion->desconectar();
 
         if($result->num_rows > 0){
@@ -71,9 +71,9 @@ class User {
         $conexion = new Conexion();
         $conexion->conectar();
 
-        $document = $data['document_number'];
+        $doc = $conexion->real_escape_string($data['document_number']);
 
-        $sql = "SELECT id FROM users WHERE document_number = '$document'";
+        $sql = "SELECT id FROM usuarios WHERE document_number = '$doc'";
         $conexion->query($sql);
 
         $result = $conexion->getResult();
@@ -82,7 +82,21 @@ class User {
         return $result->num_rows > 0;
     }
 
+    public function getDocumentTypes(){
+        $conexion = new Conexion();
+        $conexion->conectar();
 
+        $sql = "SELECT * FROM documentos";
+        $conexion->query($sql);
+
+        $result = $conexion->getResult();
+
+        $data = [];
+        while($row = $result->fetch_assoc()){
+            $data[] = $row;
+        }
+
+        $conexion->desconectar();
+        return $data;
+    }
 }
-
-?>

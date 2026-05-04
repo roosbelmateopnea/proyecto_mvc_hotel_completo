@@ -7,14 +7,19 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
-    <link rel="stylesheet" href="/proyecto_hotel/css/style.css">
+    <link rel="stylesheet" href="/proyecto_hotel/CSS/style.css"> 
 </head>
 
 <body class="bg-dark d-flex justify-content-center align-items-center min-vh-100">
+    
+    <a href="/proyecto_hotel/index.php?action=home" class="btn btn-outline-secondary btn-sm" style="position: fixed; top: 20px; left: 20px; z-index: 1000;">
+        <i class="bi bi-arrow-left me-2"></i>Volver
+    </a>
 
     <div class="card shadow-lg border-0 my-5" style="width: 100%; max-width: 650px;">
         <div class="card-body p-4 p-md-5">
+            
+            
             
             <div class="text-center mb-4">
                 <i class="bi bi-person-circle text-success" style="font-size: 3.5rem;"></i>
